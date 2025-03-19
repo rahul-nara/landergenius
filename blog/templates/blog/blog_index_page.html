@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% load static %}  {# Load the static files #}
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static '../../static/blog/css/style.css' %}">
+</head>
+
+{% load wagtailcore_tags wagtailimages_tags %}  {# Load wagtailimages_tags #}
+
+{% block body_class %}template-blogindexpage{% endblock %}
+
+{% block content %}
+    <section class="blog__listing__sec">
+        <div class="container">
+            <div class="blog__listing__wrap">
+                <div class="row">
+                    {% for post in page.get_children %}
+                        {% with post=post.specific %}
+                            <div class="col-md-4">
+                                <div class="card mb-4 shadow-sm">
+                                    <figure>
+                                        {% with post.main_image as main_image %}
+                                            {% if main_image %}
+                                                {% image main_image fill-320x240 %} {# Fix the image tag #}
+                                            {% endif %}
+                                        {% endwith %}
+                                    </figure>
+
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <a href="{% pageurl post %}" class="text-decoration-none">{{ post.title }}</a>
+                                        </h5>
+                                        <p class="card-text">{{ post.intro }}</p>
+                                        <a href="{% pageurl post %}" class="btn btn-primary">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endwith %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
