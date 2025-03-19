@@ -1,1 +1,1 @@
-web: gunicorn landergenius.wsgi --log-file -
+web: gunicorn landergenius.wsgi:application
