@@ -1,11 +1,7 @@
+{% extends "base.html" %}
+
 <!-- Load the wagtailimages_tags: -->
 {% load wagtailcore_tags wagtailimages_tags %}
-
-{% load static %}  {# Load the static files #}
-
-<head>
-    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/style.css' %}">
-</head>
 
 {% block body_class %}template-blogpage{% endblock %}
 
@@ -16,12 +12,14 @@
                 <h1>{{ page.title }}</h1>
                 <p class="meta">{{ page.date }}</p>
 
-                {% for item in page.gallery_images.all %}
-                    <div>
-                        {% image item.image fill-320x240 %}
-                        <!-- <p>{{ item.caption }}</p> -->
-                    </div>
-                {% endfor %}
+                <figure>
+                    {% for item in page.gallery_images.all %}
+                        <div>
+                            {% image item.image fill-800x450 %}
+                            <!-- <p>{{ item.caption }}</p> -->
+                        </div>
+                    {% endfor %}
+                </figure>
 
                 <div class="intro">{{ page.intro }}</div>
 

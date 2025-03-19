@@ -1,11 +1,5 @@
 {% extends "base.html" %}
 
-{% load static %}  {# Load the static files #}
-
-<head>
-    <link rel="stylesheet" type="text/css" href="{% static '../../static/blog/css/style.css' %}">
-</head>
-
 {% load wagtailcore_tags wagtailimages_tags %}  {# Load wagtailimages_tags #}
 
 {% block body_class %}template-blogindexpage{% endblock %}
@@ -22,7 +16,7 @@
                                     <figure>
                                         {% with post.main_image as main_image %}
                                             {% if main_image %}
-                                                {% image main_image fill-320x240 %} {# Fix the image tag #}
+                                                {% image main_image fill-899x450 %} {# Fix the image tag #}
                                             {% endif %}
                                         {% endwith %}
                                     </figure>
