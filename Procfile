@@ -1,0 +1,1 @@
+web: gunicorn landergenius.wsgi --log-file -
